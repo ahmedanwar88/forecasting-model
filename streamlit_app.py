@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from prophet import Prophet
 import matplotlib.pyplot as plt
+from prophet.plot import plot_plotly
 
 st.title("📈 Prophet Forecasting App")
 
@@ -48,8 +49,13 @@ if uploaded_file is not None:
                 fig1 = model.plot(forecast)
                 st.pyplot(fig1)
 
+                # Plot interactive forecast
+                st.subheader("Interactive Forecast Plot")
+                fig2 = plot_plotly(model, forecast)
+                st.plotly_chart(fig2, use_container_width=True)
+
                 # Show forecast data
-                st.subheader("Forecast Data")
+                st.subheader("Forecast Data (The last 5 values for preview)")
                 st.write(forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].tail())
 
                 # Create downloadable CSV
