@@ -10,7 +10,7 @@ st.title("📈 Prophet Forecasting App")
 uploaded_file = st.file_uploader("Upload your CSV file (must contain 'ds' and 'y' columns)", type=["csv"])
 
 # Columns description
-st.markdown("*The 'ds' column should be in the format YYYY-MM-DD and the 'ys' column should be the numeric value of the forecasting target.*")
+st.markdown("*The 'ds' column should be in the format YYYY-MM-DD and the 'y' column should be the numeric value of the forecasting target.*")
 
 # Number of days to forecast
 periods_input = st.number_input('How many days to forecast?', min_value=1, max_value=365, value=30)
